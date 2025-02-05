@@ -1,6 +1,6 @@
 // pages/Home.tsx
 import React from 'react';
-
+import { Outlet, Link } from 'react-router-dom';
 
 const Home: React.FC = () => (
   <div>
@@ -9,12 +9,12 @@ const Home: React.FC = () => (
       <div className="container mx-auto px-4 text-center">
         <h1 className="text-5xl font-bold mb-4">PR Prabandhak</h1>
         <p className="text-xl mb-8">Transforming ideas into digital reality</p>
-        <a
-          href="/choose-path"
-          className="bg-white text-blue-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
+        <Link
+        to="/choose-path"
+        className="bg-white text-blue-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
         >
           Get Started
-        </a>
+      </Link>
       </div>
     </section>
 
@@ -92,12 +92,12 @@ const Home: React.FC = () => (
         <p className="text-xl mb-8">
           Join us today and take the first step towards digital excellence.
         </p>
-        <a
-          href="/choose-path"
-          className="bg-white text-blue-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
+        <Link
+        to="/choose-path"
+        className="bg-white text-blue-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
         >
           Get Started
-        </a>
+      </Link>
       </div>
     </section>
   </div>
