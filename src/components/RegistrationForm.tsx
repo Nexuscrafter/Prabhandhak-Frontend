@@ -172,22 +172,24 @@ const RegistrationForm: React.FC = () => {
   const isFormValid = Object.keys(getErrors(formData)).length === 0;
 
   return (
-    <section id="registration-form" className="py-16 bg-gradient-to-br from-gray-100 to-gray-200">
+    <section id="registration-form" className="py-16 bg-black">
       <div className="container mx-auto px-4 max-w-3xl">
-        <div className="bg-white rounded-lg shadow-lg p-10">
-          <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Influencer Registration</h2>
+        <div className="bg-gray-900 border border-orange-500 rounded-2xl shadow-[0_0_20px_rgba(255,165,0,0.6)] p-10">
+          <h2 className="text-3xl font-bold mb-8 text-center text-orange-500 drop-shadow-lg">
+            Influencer Registration
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-6">
               {/* Name Field */}
               <div>
-                <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
+                <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                   required
                 />
                 {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -195,22 +197,22 @@ const RegistrationForm: React.FC = () => {
               
               {/* Email Field */}
               <div>
-                <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
+                <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                   required
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
               
-              {/* Age Field (Changed from slider to normal number input) */}
+              {/* Age Field */}
               <div>
-                <label htmlFor="age" className="block text-gray-700 mb-2">Age</label>
+                <label htmlFor="age" className="block text-gray-300 mb-2">Age</label>
                 <input
                   type="number"
                   id="age"
@@ -218,7 +220,7 @@ const RegistrationForm: React.FC = () => {
                   placeholder="Enter your age"
                   value={formData.age}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                   required
                 />
                 {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
@@ -226,13 +228,13 @@ const RegistrationForm: React.FC = () => {
               
               {/* Gender Field */}
               <div>
-                <label htmlFor="gender" className="block text-gray-700 mb-2">Gender</label>
+                <label htmlFor="gender" className="block text-gray-300 mb-2">Gender</label>
                 <select
                   id="gender"
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                   required
                 >
                   <option value="">Select gender</option>
@@ -245,14 +247,14 @@ const RegistrationForm: React.FC = () => {
               
               {/* Pincode Field */}
               <div>
-                <label htmlFor="pincode" className="block text-gray-700 mb-2">Location Pincode</label>
+                <label htmlFor="pincode" className="block text-gray-300 mb-2">Location Pincode</label>
                 <input
                   type="text"
                   id="pincode"
                   name="pincode"
                   value={formData.pincode}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                   required
                 />
                 {errors.pincode && <p className="text-red-500 text-sm mt-1">{errors.pincode}</p>}
@@ -269,7 +271,7 @@ const RegistrationForm: React.FC = () => {
                   placeholder="YouTube Link"
                   value={formData.youtubeLink}
                   onChange={handleChange}
-                  className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                 />
               </div>
               {errors.youtubeLink && <p className="text-red-500 text-sm mt-1">{errors.youtubeLink}</p>}
@@ -282,7 +284,7 @@ const RegistrationForm: React.FC = () => {
                   placeholder="Instagram Link"
                   value={formData.instagramLink}
                   onChange={handleChange}
-                  className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                 />
               </div>
               {errors.instagramLink && <p className="text-red-500 text-sm mt-1">{errors.instagramLink}</p>}
@@ -295,7 +297,7 @@ const RegistrationForm: React.FC = () => {
                   placeholder="Facebook Link"
                   value={formData.facebookLink}
                   onChange={handleChange}
-                  className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                 />
               </div>
               {errors.facebookLink && <p className="text-red-500 text-sm mt-1">{errors.facebookLink}</p>}
@@ -308,36 +310,36 @@ const RegistrationForm: React.FC = () => {
                   placeholder="Twitter Link"
                   value={formData.twitterLink}
                   onChange={handleChange}
-                  className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                 />
               </div>
               {errors.twitterLink && <p className="text-red-500 text-sm mt-1">{errors.twitterLink}</p>}
               
               <div className="flex items-center gap-2">
-                <LinkIcon className="text-gray-600" />
+                <LinkIcon className="text-gray-400" />
                 <input
                   type="url"
                   name="otherLink"
                   placeholder="Other Link"
                   value={formData.otherLink}
                   onChange={handleChange}
-                  className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
                 />
               </div>
               {errors.otherLink && <p className="text-red-500 text-sm mt-1">{errors.otherLink}</p>}
             </div>
             
             {serverMessage && (
-              <p className="mt-4 text-center text-sm text-green-600">{serverMessage}</p>
+              <p className="mt-4 text-center text-sm text-green-500">{serverMessage}</p>
             )}
             
             <button
               type="submit"
               disabled={!isFormValid || loading}
-              className={`mt-8 w-full py-3 px-6 rounded-lg transition-colors ${
+              className={`mt-8 w-full py-3 px-6 rounded-lg transition-colors font-semibold ${
                 isFormValid && !loading
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
-                  : 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                  ? 'bg-orange-500 hover:bg-orange-600'
+                  : 'bg-gray-600 text-gray-400 cursor-not-allowed'
               }`}
             >
               {loading ? 'Submitting...' : 'Submit Registration'}
