@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Youtube, Instagram, Facebook, Twitter, Link as LinkIcon } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 interface FormData {
   name: string;
@@ -150,12 +151,12 @@ const RegistrationForm: React.FC = () => {
       // Replace the URL with your backend endpoint.
       const response = await axios.post('http://localhost:8848/api/v1/influencers/create', formData);
       console.log('Form submitted successfully:', response.data.message);
-      setServerMessage(response.data.message);
+      toast.success(response.data.message);
       // Clear the form data after successful submission.
       setFormData(initialFormData);
     } catch (error) {
       console.error('Error submitting form:', error);
-      setServerMessage('An error occurred while submitting the form.');
+      toast.error('An error occurred while submitting the form.');
     } finally {
       setLoading(false);
     }
