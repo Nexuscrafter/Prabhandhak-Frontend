@@ -13,7 +13,7 @@ const Founders: React.FC = () => (
         <div className="bg-gray-800 rounded-lg p-8 shadow-lg transform hover:-translate-y-1 transition-transform">
           <div className="mb-6">
             <img
-              src="/src/assets/Manish.jpg"
+              src="/public/assets/images/Manish.jpg"
               alt="Manish Jha"
               className="rounded-lg object-cover w-full h-[300px]"
             />
@@ -27,7 +27,7 @@ const Founders: React.FC = () => (
         <div className="bg-gray-800 rounded-lg p-8 shadow-lg transform hover:-translate-y-1 transition-transform">
           <div className="mb-6">
             <img
-              src="/src/assets/Sudhir.jpg"
+              src="/public/assets/images/Sudhir.jpg"
               alt="Sudhir Narwal"
               className="rounded-lg object-cover w-full h-[300px]"
             />

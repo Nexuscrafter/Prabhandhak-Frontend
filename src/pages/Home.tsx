@@ -36,9 +36,9 @@ const Home: React.FC = () => (
         <h2 className="text-5xl font-bold text-center text-orange-500 mb-16 drop-shadow-md">Why Choose Us?</h2>
         <div className="grid md:grid-cols-3 gap-12">
           {[
-            { img: "/src/assets/Innovative.jpg", title: "Innovative Strategy", text: "We craft bespoke digital strategies that resonate with your brand identity and target audience." },
-            { img: "/src/assets/DataDriven.jpg", title: "Data Driven Insights", text: "Our strategies are backed by rigorous data analysis to ensure optimal engagement and ROI." },
-            { img: "/src/assets/GlobalNetwork.jpg", title: "Global Network", text: "Leverage our vast network of influencers to expand your brand's reach globally." }
+            { img: "/public/assets/images/Innovative.jpg", title: "Innovative Strategy", text: "We craft bespoke digital strategies that resonate with your brand identity and target audience." },
+            { img: "/public/assets/images/DataDriven.jpg", title: "Data Driven Insights", text: "Our strategies are backed by rigorous data analysis to ensure optimal engagement and ROI." },
+            { img: "/public/assets/images/GlobalNetwork.jpg", title: "Global Network", text: "Leverage our vast network of influencers to expand your brand's reach globally." }
           ].map((feature, index) => (
             <motion.div
               key={index}
