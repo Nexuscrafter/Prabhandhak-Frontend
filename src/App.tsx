@@ -2,6 +2,9 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Building2, MapPin, Mail, Phone, Linkedin } from 'lucide-react';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Navbar: React.FC = () => (
   <nav className="fixed top-0 left-0 right-0 bg-gray-900 shadow-lg z-50">
@@ -48,8 +51,15 @@ const Navbar: React.FC = () => (
   </nav>
 );
 
-const Footer: React.FC = () => (
-  <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-700 mt-16">
+const Footer: React.FC = () => {
+
+  const handleSubscribeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    toast.success('Subscribed successfully!');
+  };
+
+  return(
+    <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-700 mt-16">
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
         {/* Company Info */}
@@ -118,6 +128,7 @@ const Footer: React.FC = () => (
             <button
               type="submit"
               className="px-6 py-3 bg-orange-500 text-white rounded-md hover:bg-orange-400 transition-colors"
+              onClick={handleSubscribeClick}
             >
               Subscribe
             </button>
@@ -134,10 +145,21 @@ const Footer: React.FC = () => (
       </div>
     </div>
   </footer>
-);
+  );
+
+  
+};
 
 
 const App: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    // Redirects to home only if the route is not recognized
+    if (!['/', '/about', '/choose-path', '/founders', '/register'].includes(location.pathname)) {
+      navigate('/');
+    }
+  }, [location.pathname, navigate]);
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
