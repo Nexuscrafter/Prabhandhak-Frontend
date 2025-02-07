@@ -17,7 +17,7 @@ const About: React.FC = () => (
         </div>
         <div>
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800"
+            src="/assets/images/image.png"
             alt="Team collaboration"
             className="rounded-lg shadow-2xl"
           />
