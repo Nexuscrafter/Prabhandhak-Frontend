@@ -2,8 +2,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Building2, MapPin, Mail, Phone, Linkedin } from 'lucide-react';
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Navbar: React.FC = () => (
@@ -152,14 +150,7 @@ const Footer: React.FC = () => {
 
 
 const App: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  useEffect(() => {
-    // Redirects to home only if the route is not recognized
-    if (!['/', '/about', '/choose-path', '/founders', '/register'].includes(location.pathname)) {
-      navigate('/');
-    }
-  }, [location.pathname, navigate]);
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
