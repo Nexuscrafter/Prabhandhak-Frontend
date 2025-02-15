@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Youtube, Instagram, Facebook, Twitter, Link as LinkIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 interface FormData {
   name: string;
@@ -173,9 +174,24 @@ const RegistrationForm: React.FC = () => {
   const isFormValid = Object.keys(getErrors(formData)).length === 0;
 
   return (
-    <section id="registration-form" className="py-16 bg-black">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="bg-gray-900 border border-orange-500 rounded-2xl shadow-[0_0_20px_rgba(255,165,0,0.6)] p-10">
+    <section
+      id="registration-form"
+      className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-800 via-orange-500 to-purple-800"
+    >
+      {/* Animated Decorative Background Shapes */}
+      <motion.div
+        className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-gradient-to-br from-purple-500 to-orange-500 rounded-full mix-blend-overlay opacity-30"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+      />
+      <motion.div
+        className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-gradient-to-br from-orange-500 to-purple-500 rounded-full mix-blend-overlay opacity-30"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+      />
+
+      <div className="relative container mx-auto px-4 max-w-3xl">
+        <div className="bg-gray-900 border border-orange-500 rounded-2xl shadow-2xl p-10">
           <h2 className="text-3xl font-bold mb-8 text-center text-orange-500 drop-shadow-lg">
             Influencer Registration
           </h2>

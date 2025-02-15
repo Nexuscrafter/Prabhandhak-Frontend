@@ -1,10 +1,26 @@
 // components/Founders.tsx
 import React from 'react';
 import { Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Founders: React.FC = () => (
-  <section id="founders" className="py-16 bg-gray-900">
-    <div className="container mx-auto px-4">
+  <section
+    id="founders"
+    className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-800 via-orange-500 to-purple-800"
+  >
+    {/* Animated Decorative Background Shapes */}
+    <motion.div
+      className="absolute top-[-10%] left-[-10%] w-80 h-80 bg-gradient-to-br from-purple-500 to-orange-500 rounded-full mix-blend-overlay opacity-30"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+    />
+    <motion.div
+      className="absolute bottom-[-10%] right-[-10%] w-80 h-80 bg-gradient-to-br from-orange-500 to-purple-500 rounded-full mix-blend-overlay opacity-30"
+      animate={{ rotate: -360 }}
+      transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+    />
+
+    <div className="relative container mx-auto px-4">
       <h2 className="text-3xl font-bold mb-12 text-center flex items-center justify-center gap-2 text-white">
         <Users className="h-8 w-8 text-orange-500" />
         Meet Our Founders
