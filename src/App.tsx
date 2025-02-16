@@ -4,54 +4,108 @@ import { Outlet, Link } from 'react-router-dom';
 import { Building2, MapPin, Mail, Phone, Linkedin } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { HashLink } from 'react-router-hash-link';
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Navbar: React.FC = () => (
-  <nav className="fixed top-0 left-0 right-0 bg-gray-900 shadow-lg z-50">
-    <div className="container mx-auto px-4">
-      <div className="flex items-center justify-between h-16">
-        <div className="flex items-center gap-2">
-          <Building2 className="h-6 w-6 text-orange-500" />
-          <span className="text-xl font-bold text-white">PR Prabandhak</span>
-        </div>
-        <div className="hidden md:flex items-center gap-6">
-          <Link
-            to="/"
-            className="text-gray-300 hover:text-orange-500 transition-colors"
+  return (
+    <nav className="fixed top-0 left-0 right-0 bg-gray-900 shadow-lg z-50">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-20"> {/* Increased height */}
+          {/* Logo - Made Bigger */}
+          <div className="flex items-center gap-3">
+            <Building2 className="h-8 w-8 text-orange-500" /> {/* Larger Icon */}
+            <span className="text-2xl font-bold text-white">PR Prabandhak</span>
+          </div>
+
+          {/* Desktop Menu - Bigger Font */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link
+              to="/"
+              className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+            >
+              Home
+            </Link>
+            <HashLink
+              smooth
+              to="/#about"
+              className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+            >
+              About
+            </HashLink>
+            <Link
+              to="/founders"
+              className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+            >
+              Founders
+            </Link>
+            <Link
+              to="/register"
+              className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+            >
+              Register
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button - Bigger */}
+          <button
+            className="md:hidden text-white p-2"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            Home
-          </Link>
-          <HashLink
-            smooth
-            to="/#about"
-            className="text-gray-300 hover:text-orange-500 transition-colors"
-          >
-            About
-          </HashLink>
-          <Link
-            to="/choose-path"
-            className="text-gray-300 hover:text-orange-500 transition-colors"
-          >
-            Choose Path
-          </Link>
-          <Link
-            to="/founders"
-            className="text-gray-300 hover:text-orange-500 transition-colors"
-          >
-            Founders
-          </Link>
-          <Link
-            to="/register"
-            className="text-gray-300 hover:text-orange-500 transition-colors"
-          >
-            Register
-          </Link>
+            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+          </button>
         </div>
       </div>
-    </div>
-  </nav>
-);
 
+      {/* Mobile Dropdown Menu - Bigger Text */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden bg-gray-900 px-6 pb-6 shadow-lg"
+          >
+            <div className="flex flex-col gap-6">
+              <Link
+                to="/"
+                className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
+              <HashLink
+                smooth
+                to="/#about"
+                className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                About
+              </HashLink>
+              <Link
+                to="/founders"
+                className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Founders
+              </Link>
+              <Link
+                to="/register"
+                className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Register
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
 
 
 const Footer: React.FC = () => {
