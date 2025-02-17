@@ -16,6 +16,12 @@ interface FormData {
   facebookLink: string;
   twitterLink: string;
   otherLink: string;
+  // NEW: Geolocation
+  latitude?: string;
+  longitude?: string;
+  // NEW: Phone/Country
+  countryCode: string;
+  phoneNumber: string;
 }
 
 interface FormErrors {
@@ -29,6 +35,9 @@ interface FormErrors {
   facebookLink?: string;
   twitterLink?: string;
   otherLink?: string;
+  // NEW: Geolocation not strictly validated here, so no fields
+  countryCode?: string;
+  phoneNumber?: string;
 }
 
 // Helper function to validate URLs.
@@ -86,6 +95,18 @@ const getErrors = (formData: FormData): FormErrors => {
     newErrors.pincode = 'Pincode must be a 6-digit number.';
   }
 
+  // NEW: Country Code validation
+  if (!formData.countryCode) {
+    newErrors.countryCode = 'Country code is required.';
+  }
+
+  // NEW: Phone Number validation
+  if (!formData.phoneNumber.trim()) {
+    newErrors.phoneNumber = 'Phone number is required.';
+  } else if (!/^[0-9]{7,15}$/.test(formData.phoneNumber.trim())) {
+    newErrors.phoneNumber = 'Enter a valid phone number (7–15 digits).';
+  }
+
   // Validate each URL field only if a value is provided.
   if (formData.youtubeLink.trim() && !isValidURL(formData.youtubeLink.trim())) {
     newErrors.youtubeLink = 'Enter a valid URL.';
@@ -117,7 +138,13 @@ const RegistrationForm: React.FC = () => {
     instagramLink: '',
     facebookLink: '',
     twitterLink: '',
-    otherLink: ''
+    otherLink: '',
+    // NEW: Geolocation
+    latitude: '',
+    longitude: '',
+    // NEW: Phone/Country
+    countryCode: '',
+    phoneNumber: ''
   };
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
@@ -125,10 +152,30 @@ const RegistrationForm: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [serverMessage, setServerMessage] = useState<string>('');
 
-  // Re-run validation on every form data change.
+  // Re-run validation on every form data change + capture geolocation
   useEffect(() => {
+    // Existing validation re-run
     const currentErrors = getErrors(formData);
     setErrors(currentErrors);
+
+    // NEW: Capture geolocation once on mount
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setFormData((prev) => ({
+            ...prev,
+            latitude: position.coords.latitude.toString(),
+            longitude: position.coords.longitude.toString(),
+          }));
+        },
+        (error) => {
+          console.error('Geolocation error:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation not supported by this browser.');
+    }
+    // eslint-disable-next-line
   }, [formData]);
 
   const validateForm = (): boolean => {
@@ -171,7 +218,7 @@ const RegistrationForm: React.FC = () => {
   };
 
   // Determine if the form is valid.
-  const isFormValid = Object.keys(getErrors(formData)).length === 0;
+  const isFormValid = Object.keys(errors).length === 0;
 
   return (
     <section
@@ -275,6 +322,43 @@ const RegistrationForm: React.FC = () => {
                   required
                 />
                 {errors.pincode && <p className="text-red-500 text-sm mt-1">{errors.pincode}</p>}
+              </div>
+
+              {/* Country Code */}
+              <div>
+                <label htmlFor="countryCode" className="block text-gray-300 mb-2">Country Code</label>
+                <select
+                  id="countryCode"
+                  name="countryCode"
+                  value={formData.countryCode}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
+                  required
+                >
+                  <option value="">Select code</option>
+                  <option value="+1">+1 (USA)</option>
+                  <option value="+44">+44 (UK)</option>
+                  <option value="+91">+91 (India)</option>
+                  <option value="+61">+61 (Australia)</option>
+                  {/* Add more as needed */}
+                </select>
+                {errors.countryCode && <p className="text-red-500 text-sm mt-1">{errors.countryCode}</p>}
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label htmlFor="phoneNumber" className="block text-gray-300 mb-2">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  placeholder="Enter your phone number"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none text-white"
+                  required
+                />
+                {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>}
               </div>
             </div>
             

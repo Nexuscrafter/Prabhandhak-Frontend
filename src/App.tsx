@@ -34,7 +34,14 @@ const Navbar: React.FC = () => {
               to="/#about"
               className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
             >
-              About
+              About Us
+            </HashLink>
+            <HashLink
+              smooth
+              to="/#services"
+              className="text-lg text-gray-300 hover:text-orange-500 transition-colors"
+            >
+              Our Services
             </HashLink>
             <Link
               to="/founders"
