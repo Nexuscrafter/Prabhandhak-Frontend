@@ -30,28 +30,28 @@ const Founders: React.FC = () => (
           <div className="mb-6">
             <img
               src="/assets/images/Manish.jpg"
-              alt="Manish Jha"
+              alt="XXXXX"
               className="rounded-lg object-cover w-full h-[300px]"
             />
           </div>
           <h3 className="text-2xl font-bold mb-2 text-white">Manish Jha</h3>
           <p className="text-orange-500 font-semibold mb-4">CEO & Co-founder</p>
           <p className="text-gray-300">
-            With a strong background in analytics and influencer marketing, Manish excels in driving engagement and fostering meaningful collaborations.
+            With a strong background in analytics and influencer marketing, He excels in driving engagement and fostering meaningful collaborations.
           </p>
         </div>
         <div className="bg-gray-800 rounded-lg p-8 shadow-lg transform hover:-translate-y-1 transition-transform">
           <div className="mb-6">
             <img
               src="/assets/images/Sudhir.jpg"
-              alt="Sudhir Narwal"
+              alt="XXXXX"
               className="rounded-lg object-cover w-full h-[300px]"
             />
           </div>
           <h3 className="text-2xl font-bold mb-2 text-white">Sudhir Narwal</h3>
           <p className="text-orange-500 font-semibold mb-4">CTO & Co-founder</p>
           <p className="text-gray-300">
-            Sudhir brings a wealth of experience in digital marketing and creative strategies, ensuring every campaign delivers measurable results.
+            He brings a wealth of experience in digital marketing and creative strategies, ensuring every campaign delivers measurable results.
           </p>
         </div>
       </div>
